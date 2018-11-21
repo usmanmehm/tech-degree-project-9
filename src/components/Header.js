@@ -1,16 +1,28 @@
 import React from 'react';
+import { Route, NavLink } from 'react-router-dom'
 
 import SearchForm from './SearchForm';
 
-const Header = () => {
+const Header = (props) => {
+
+    function capitalize (word) {
+        let firstLetter = word[0].toUpperCase();
+        let rest = word.slice(1);
+        return firstLetter + rest;
+    }
+
+    let topics = props.topics.map( topic => {
+        return <li><NavLink to={"/" + topic}>{capitalize(topic)}</NavLink></li>
+    })
+
     return (
         <div>
-            <SearchForm />
-            <nav class="main-nav">
+            <SearchForm 
+                loadImages = {props.loadImages}
+            />
+            <nav className="main-nav">
                 <ul>
-                    <li><a href='#'>Cats</a></li>
-                    <li><a href='#'>Dogs</a></li>
-                    <li><a href='#'>Computers</a></li>
+                    {topics}
                 </ul>
             </nav>
         </div>
