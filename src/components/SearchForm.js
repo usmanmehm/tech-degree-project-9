@@ -5,7 +5,8 @@ export default class SearchForm extends Component {
     handleSearch = (event) => {
         event.preventDefault();
         let query = this.query.value;
-        this.props.loadImages(query);
+        this.props.history.push('/search/' + query);
+        this.props.searchImages(query);
     }
 
     render() {
