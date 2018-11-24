@@ -14,13 +14,14 @@ class App extends Component {
 
   state = {
     photoData: [],
-    loading: true
+    loading: true,
   }
 
+  homeQuery = "forest";
   topics = [ "birds" , "mountains", "nature"]; //these are the different pages that we want
   
   //this function retrieves data from flickr API and sets the data to the photoData state
-  loadImages = (query = "clouds") => {
+  loadImages = (query = this.homeQuery) => {
     this.setState({ loading: true, photoData: [] })
     axios.get(`https://api.flickr.com/services/rest?method=flickr.photos.search&api_key=${apiKey}&format=json&nojsoncallback=1&per_page=24&tags=${query}`)
     .then(response => {
