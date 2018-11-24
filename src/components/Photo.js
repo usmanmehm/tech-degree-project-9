@@ -2,10 +2,11 @@ import React from 'react';
 
 const Photo = (props) => {
 
-
     return (
         <li>
-            <img src={props.photoUrl} alt="" />
+            <a href={props.photoUrl} target="_blank">
+                <img src={props.photoUrl} alt="" />
+            </a>
         </li>
     );
 }
